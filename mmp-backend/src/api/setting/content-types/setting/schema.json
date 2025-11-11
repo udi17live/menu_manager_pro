@@ -25,11 +25,6 @@
         "images"
       ]
     },
-    "user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
-    },
     "restaurant_currency": {
       "type": "enumeration",
       "default": "USD",
@@ -190,6 +185,11 @@
         "ZMW",
         "ZWL"
       ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

@@ -17,7 +17,14 @@
     "menu_items": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::menu-item.menu-item"
+      "target": "api::menu-item.menu-item",
+      "mappedBy": "menu_item_category"
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu.menu",
+      "inversedBy": "menu_item_categories"
     }
   }
 }

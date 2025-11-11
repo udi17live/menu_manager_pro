@@ -29,12 +29,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::menu-item-category.menu-item-category"
-    },
-    "menu_items": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::menu-item.menu-item",
-      "inversedBy": "menus"
     }
   }
 }

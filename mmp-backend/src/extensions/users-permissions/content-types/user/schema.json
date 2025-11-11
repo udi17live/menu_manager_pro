@@ -64,6 +64,19 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
+    },
+    "restaurant_id": {
+      "type": "uid",
+      "unique": true,
+      "configurable": false,
+      "writable": false,
+      "required": false
+    },
+    "setting": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::setting.setting",
+      "mappedBy": "user"
     }
   }
 }

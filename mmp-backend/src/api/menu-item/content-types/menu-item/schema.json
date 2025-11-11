@@ -35,11 +35,11 @@
         "images"
       ]
     },
-    "menus": {
+    "menu_item_category": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::menu.menu",
-      "mappedBy": "menu_items"
+      "relation": "manyToOne",
+      "target": "api::menu-item-category.menu-item-category",
+      "inversedBy": "menu_items"
     }
   }
 }

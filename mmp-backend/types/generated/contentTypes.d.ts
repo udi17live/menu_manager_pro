@@ -488,6 +488,7 @@ export interface ApiMenuItemCategoryMenuItemCategory
       'api::menu-item-category.menu-item-category'
     > &
       Schema.Attribute.Private;
+    menu: Schema.Attribute.Relation<'manyToOne', 'api::menu.menu'>;
     menu_items: Schema.Attribute.Relation<
       'oneToMany',
       'api::menu-item.menu-item'
@@ -525,7 +526,10 @@ export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
       'api::menu-item.menu-item'
     > &
       Schema.Attribute.Private;
-    menus: Schema.Attribute.Relation<'manyToMany', 'api::menu.menu'>;
+    menu_item_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::menu-item-category.menu-item-category'
+    >;
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -556,10 +560,6 @@ export interface ApiMenuMenu extends Struct.CollectionTypeSchema {
     menu_item_categories: Schema.Attribute.Relation<
       'oneToMany',
       'api::menu-item-category.menu-item-category'
-    >;
-    menu_items: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::menu-item.menu-item'
     >;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
@@ -1249,10 +1249,12 @@ export interface PluginUsersPermissionsUser
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
+    restaurant_id: Schema.Attribute.UID & Schema.Attribute.Unique;
     role: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    setting: Schema.Attribute.Relation<'oneToOne', 'api::setting.setting'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

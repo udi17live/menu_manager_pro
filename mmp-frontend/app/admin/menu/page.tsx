@@ -1,5 +1,6 @@
-import React from "react";
+import getMenusForUser from "@/actions/menuActions";
 
-export default function MenuPage() {
-  return <div>MenuPage</div>;
+export default async function MenuPage() {
+  const menuData = await getMenusForUser();
+  return <div>Menu Page</div>;
 }

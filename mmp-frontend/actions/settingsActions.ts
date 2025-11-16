@@ -1,15 +1,10 @@
 "use server";
 
 import { auth } from "@/lib/auth";
-import {
-  getStrapiData,
-  strapiClient,
-  updateStrapiData,
-} from "@/lib/strapiClient";
-import { getStrapiToken } from "./authActions";
+import { getStrapiData, updateStrapiData } from "@/lib/strapiClient";
 
 export async function getMeta() {
-  const data = await getStrapiData("/settings/meta");
+  const data = await getStrapiData("/meta");
   return data;
 }
 

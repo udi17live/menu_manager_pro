@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import {
+  Building2,
   LayoutDashboard,
   Menu,
   Settings2,
@@ -29,26 +30,31 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#/admin/",
+      url: "/admin/",
       icon: LayoutDashboard,
     },
     {
+      title: "Restaurants",
+      url: "/admin/restaurants/",
+      icon: Building2,
+    },
+    {
       title: "Menu",
-      url: "#",
+      url: "/admin/menu/",
       icon: Menu,
       isActive: true,
       items: [
         {
           title: "All Menu's",
-          url: "/admin/menu",
+          url: "/admin/menu/",
         },
         {
           title: "Menu Items",
-          url: "#",
+          url: "/admin/menu/items/",
         },
         {
           title: "Menu Categories",
-          url: "#",
+          url: "/admin/menu/categories/",
         },
       ],
     },

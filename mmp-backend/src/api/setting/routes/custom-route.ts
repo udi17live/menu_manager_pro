@@ -11,7 +11,7 @@ export default {
     },
     {
       method: "GET",
-      path: "/settings/meta",
+      path: "/meta",
       handler: "setting.meta",
       config: {
         policies: [],

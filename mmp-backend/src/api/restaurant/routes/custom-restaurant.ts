@@ -11,5 +11,13 @@ export default {
         policies: [],
       },
     },
+    {
+      method: "GET",
+      path: "/restaurants/me",
+      handler: "restaurant.me",
+      config: {
+        policies: [],
+      },
+    },
   ],
 };

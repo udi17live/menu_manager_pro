@@ -1,13 +1,13 @@
 "use client";
 
 import { getMeta } from "@/actions/settingsActions";
-import { strapiClient } from "@/lib/strapiClient";
 import { useSession } from "next-auth/react";
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface MetaContextProviderInterface {
   theme: string[];
   currency: string[];
+  country: string[];
 }
 
 const MetaContext = createContext<MetaContextProviderInterface | null>(null);
@@ -23,9 +23,12 @@ export function MetaContextProvider({
 
   useEffect(() => {
     async function getMetaObject() {
-      const { data } = await getMeta();
-      if (!data) return;
-      setMeta(data);
+      const response = await getMeta();
+      if (!response.success) {
+        setIsLoading(false);
+        return;
+      }
+      setMeta(response.data.data);
       setIsLoading(false);
     }
 

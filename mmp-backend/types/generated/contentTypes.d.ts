@@ -784,7 +784,7 @@ export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
+    description: Schema.Attribute.Text;
     email: Schema.Attribute.Email;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -805,7 +805,6 @@ export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    uuid: Schema.Attribute.UID<''> & Schema.Attribute.Required;
   };
 }
 

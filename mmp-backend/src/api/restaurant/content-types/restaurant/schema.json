@@ -15,10 +15,14 @@
       "type": "string",
       "required": true
     },
-    "uuid": {
-      "type": "uid",
-      "targetField": "",
-      "required": true
+    "description": {
+      "type": "text"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
     },
     "addressLine1": {
       "type": "string",
@@ -30,9 +34,6 @@
     "city": {
       "type": "string",
       "required": true
-    },
-    "postCode": {
-      "type": "string"
     },
     "country": {
       "type": "enumeration",
@@ -235,14 +236,8 @@
         "Zimbabwe"
       ]
     },
-    "phone": {
+    "postCode": {
       "type": "string"
-    },
-    "email": {
-      "type": "email"
-    },
-    "description": {
-      "type": "blocks"
     },
     "logo": {
       "type": "media",

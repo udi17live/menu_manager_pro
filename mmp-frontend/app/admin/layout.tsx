@@ -15,7 +15,7 @@ import {
 import { MetaContextProvider } from "@/providers/MetaContextProvider";
 import { Separator } from "@radix-ui/react-separator";
 import { SessionProvider } from "next-auth/react";
-import { headers } from "next/headers";
+import { Toaster } from "sonner";
 
 export default function AdminLayout({
   children,
@@ -43,6 +43,7 @@ export default function AdminLayout({
             <main className="flex flex-1 flex-col gap-4 p-4 pt-0">
               {children}
             </main>
+            <Toaster position="top-center" richColors />
           </SidebarInset>
         </SidebarProvider>
       </MetaContextProvider>

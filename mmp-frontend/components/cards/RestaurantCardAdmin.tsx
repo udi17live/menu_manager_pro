@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Card,
   CardAction,
@@ -12,6 +11,9 @@ import IconOnlyButton from "../buttons/IconOnlyButton";
 import { Edit, Mail, MapPin, Phone, Trash2 } from "lucide-react";
 import { RestaurantData } from "@/types/types";
 import RestaurantEditCreateDialog from "@/components/other/RestaurantEditCreateDialog";
+import { toast } from "sonner";
+import { deleteRestaurant } from "@/actions/restaurantActions";
+import RestaurantDeteleDialog from "../admin/restaurant/RestaurantDeleteDialog";
 
 interface RestaurantCardAdminProps {
   restaurant: RestaurantData;
@@ -29,7 +31,13 @@ export default function RestaurantCardAdmin({
             trigger={<IconOnlyButton icon={Edit} variant="secondary" />}
             restaurantObj={restaurant}
           />
-          <IconOnlyButton icon={Trash2} variant="secondary" />
+
+          <RestaurantDeteleDialog
+            id={restaurant.id}
+            trigger={
+              <IconOnlyButton icon={Trash2} variant="secondary" type="button" />
+            }
+          />
         </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col space-y-5">

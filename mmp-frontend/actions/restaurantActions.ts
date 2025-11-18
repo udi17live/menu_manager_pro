@@ -1,6 +1,7 @@
 "use server";
 import {
   createStrapiData,
+  deleteStrapiData,
   getStrapiData,
   updateStrapiData,
 } from "@/lib/strapiClient";
@@ -47,5 +48,20 @@ export async function postRestaurantData(
     success: true,
     errors: {},
     restaurantData: result?.data,
+  };
+}
+
+export async function deleteRestaurant(id: string | number) {
+  const resData = await deleteStrapiData(`/restaurants/${id}`);
+
+  console.log("deleteRestaurant: Resdata: ", resData);
+}
+
+export async function getMenusForRestaurant() {
+  const restaurantMenuData = await getStrapiData("/menus/me");
+  return {
+    success: true,
+    errors: {},
+    data: restaurantMenuData?.data,
   };
 }

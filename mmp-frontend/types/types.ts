@@ -20,3 +20,14 @@ export type RestaurantDataFormStateType = {
   errors?: Record<string, string[]> | undefined;
   restaurantData?: RestaurantData | null;
 };
+
+export type MenuData = {
+  id: number;
+  documentId: string;
+  name: string;
+  description: string;
+  isActive: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+};

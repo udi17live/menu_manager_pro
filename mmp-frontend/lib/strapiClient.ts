@@ -91,3 +91,34 @@ export async function createStrapiData(uri: string, data: any) {
     };
   }
 }
+
+export async function deleteStrapiData(uri: string) {
+  try {
+    const token = await getStrapiToken();
+    console.log(token);
+    const response = await strapiClient.fetch(uri, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    const resData = await response.json();
+
+    console.log(resData);
+
+    return {
+      success: true,
+      error: null,
+      data: resData,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      success: false,
+      error: error,
+      data: null,
+    };
+  }
+}

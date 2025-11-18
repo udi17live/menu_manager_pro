@@ -1,30 +1,19 @@
 import { LucideIcon } from "lucide-react";
 import { Button } from "../ui/button";
+import { ButtonHTMLAttributes, ComponentPropsWithoutRef } from "react";
 
-interface IconOnlyButtonProps {
+interface IconOnlyButtonProps extends ComponentPropsWithoutRef<typeof Button> {
   icon: LucideIcon;
-  type?: "button" | "submit";
-  variant?:
-    | "default"
-    | "link"
-    | "destructive"
-    | "outline"
-    | "secondary"
-    | "ghost"
-    | null
-    | undefined;
 }
 
 export default function IconOnlyButton({
-  type = "button",
   icon: Icon,
-  variant = "default",
+  ...props
 }: IconOnlyButtonProps) {
   return (
     <Button
-      variant={variant}
       className="rounded font-bold uppercase tracking-widest cursor-pointer"
-      type={type}
+      {...props}
     >
       <Icon />
     </Button>

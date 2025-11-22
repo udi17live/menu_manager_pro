@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import APIRouter, FastAPI
 
 from app.api.meta_routes import router as meta_router
 from app.api.restaurant_routes import router as restaurant_routes
@@ -30,22 +30,24 @@ app = FastAPI(
     redoc_url="/redoc" if settings.debug else None,
 )
 
-app.include_router(
+api_router = APIRouter(prefix="/api")
+
+api_router.include_router(
     fastapi_users.get_auth_router(auth_backend),
     prefix="/auth/jwt",
     tags=["auth"],
 )
-app.include_router(
+api_router.include_router(
     fastapi_users.get_register_router(UserRead, UserCreate),
     prefix="/auth",
     tags=["auth"],
 )
-app.include_router(
+api_router.include_router(
     fastapi_users.get_reset_password_router(),
     prefix="/auth",
     tags=["auth"],
 )
-app.include_router(
+api_router.include_router(
     fastapi_users.get_users_router(UserRead, UserUpdate),
     prefix="/auth",
     tags=["auth"],
@@ -53,14 +55,18 @@ app.include_router(
 
 
 # routes
-app.include_router(
+api_router.include_router(
     router=meta_router,
 )
 
-app.include_router(
+api_router.include_router(
     router=settings_router,
 )
 
-app.include_router(
+api_router.include_router(
     router=restaurant_routes,
 )
+
+
+# Adding api_router to app
+app.include_router(api_router)

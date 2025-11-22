@@ -22,7 +22,12 @@ class Settings(BaseSettings):
     # JWT
     secret_key: str = os.getenv("JWT_SECRET")
     algorithm: str = os.getenv("JWT_ALGORITHM")
-    access_token_expiry_in_mins: int = int(os.getenv("JWT_ACCESS_TOKEN_EXP") or 15)
+    access_token_expiry_in_mins: int = int(
+        os.getenv("JWT_ACCESS_TOKEN_EXP_IN_MINS") or 15
+    )
+    refresh_token_expiry_in_days: int = int(
+        os.getenv("JWT_REFRESH_TOKEN_EXP_IN_DAYS") or 7
+    )
 
     # cors
     backend_cors_origins: list[str] = os.getenv("CORS_ORIGINS").split(",")

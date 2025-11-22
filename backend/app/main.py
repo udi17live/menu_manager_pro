@@ -5,6 +5,7 @@ from fastapi import APIRouter, FastAPI
 from app.api.meta_routes import router as meta_router
 from app.api.restaurant_routes import router as restaurant_routes
 from app.api.setting_routes import router as settings_router
+from app.api.auth_routes import router as auth_router
 from app.core.auth import auth_backend
 from app.core.config import settings
 from app.core.users import fastapi_users
@@ -32,16 +33,24 @@ app = FastAPI(
 
 api_router = APIRouter(prefix="/api")
 
-api_router.include_router(
-    fastapi_users.get_auth_router(auth_backend),
-    prefix="/auth/jwt",
-    tags=["auth"],
-)
+
+# api_router.include_router(
+#     fastapi_users.get_auth_router(auth_backend),
+#     prefix="/auth/jwt",
+#     tags=["auth"],
+# )
 api_router.include_router(
     fastapi_users.get_register_router(UserRead, UserCreate),
     prefix="/auth",
     tags=["auth"],
 )
+
+api_router.include_router(
+    auth_router,
+    prefix="/auth/jwt",
+    tags=["auth"],
+)
+
 api_router.include_router(
     fastapi_users.get_reset_password_router(),
     prefix="/auth",

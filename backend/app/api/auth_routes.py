@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.core.auth import get_jwt_strategy
-from app.core.users import UserManager, fastapi_users, get_user_manager
-from app.models.user import User
+from app.core.users import UserManager, get_user_manager
 from app.schemas.token import RefreshTokenRequest, TokenResponse
 from fastapi.security import OAuth2PasswordRequestForm
 
